@@ -4,11 +4,11 @@ const User = require("./auth.model")
 
 const register = async (req, res) => {
     try {
-        const { username, password, role } = req.body
+        const { name, email, image, designation, stipend, password, role } = req.body
         const hashedPassword = await bcrypt.hash(password, 10)
-        const newUser = new User({ username, password: hashedPassword, role })
+        const newUser = new User({ name, email, image, designation, stipend, password: hashedPassword, role })
         await newUser.save()
-        res.status(201).json({ message: `User registered with username ${username}` })
+        res.status(201).json({ message: `User registered with email ${email}` })
     } catch (error) {
         res.status(500).json({ message: "Error registering user" })
     }
@@ -16,10 +16,10 @@ const register = async (req, res) => {
 
 const login = async (req, res) => {
     try {
-        const { username, password } = req.body
-        const user = await User.findOne({ username })
+        const { email, password } = req.body
+        const user = await User.findOne({ email })
         if (!user) {
-            return res.status(404).json({ message: `User with this username ${username} not found` })
+            return res.status(404).json({ message: `User with this email ${email} not found` })
         }
         const isMatch = await bcrypt.compare(password, user.password)
         if (!isMatch) {
