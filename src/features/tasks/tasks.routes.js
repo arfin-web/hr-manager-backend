@@ -4,7 +4,8 @@ const {
     getTasks,
     getTaskById,
     updateTask,
-    deleteTask
+    deleteTask,
+    getTasksByEmail
 } = require("./tasks.controller")
 
 const router = express.Router()
@@ -12,6 +13,7 @@ const router = express.Router()
 router.post("/tasks", createTask)
 router.get("/tasks", getTasks)
 router.get("/tasks/:id", getTaskById)
+router.get("/tasks/:email", getTasksByEmail)
 router.put("/tasks/:id", updateTask)
 router.delete("/tasks/:id", deleteTask)
 
