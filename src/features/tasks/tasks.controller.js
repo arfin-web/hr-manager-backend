@@ -2,8 +2,8 @@ const Task = require("./tasks.model")
 
 const createTask = async (req, res) => {
     try {
-        const { username, title, instruction, deadlinedate, deadlinetime, submitTask, status } = req.body
-        const newTask = new Task({ username, title, instruction, deadlinedate, deadlinetime, submitTask, status })
+        const { email, title, instruction, deadlinedate, deadlinetime, submitTask, status } = req.body
+        const newTask = new Task({ email, title, instruction, deadlinedate, deadlinetime, submitTask, status })
         await newTask.save()
         res.status(201).json({
             message: "Task created successfully",
@@ -39,6 +39,22 @@ const getTaskById = async (req, res) => {
         })
     } catch (error) {
         res.status(500).json({ message: "Error fetching task", error })
+    }
+}
+
+const getTasksByEmail = async (req, res) => {
+    try {
+        const { email } = req.params
+        const tasks = await Task.find({ email })
+        if (!tasks || tasks.length === 0) {
+            return res.status(404).json({ message: "No tasks found for this user" })
+        }
+        res.status(200).json({
+            message: `${email}'s Tasks fetched successfully`,
+            data: tasks
+        })
+    } catch (error) {
+        res.status(500).json({ message: "Error fetching tasks by email", error })
     }
 }
 
@@ -81,6 +97,7 @@ module.exports = {
     createTask,
     getTasks,
     getTaskById,
+    getTasksByEmail,
     updateTask,
     deleteTask
 }
