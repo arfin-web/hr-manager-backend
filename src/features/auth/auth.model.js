@@ -22,6 +22,10 @@ const userSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
+    stipendStatus: {
+        type: String,
+        default: "due"
+    },
     password: {
         type: String,
         required: true,
