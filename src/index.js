@@ -10,10 +10,16 @@ const tasksRoute = require("./features/tasks/tasks.routes")
 dbConnect()
 
 const app = express()
+app.use(express.json())
+
+const corsOptions = {
+    origin: ['http://localhost:3000', 'https://hr-manager-iota.vercel.app'],
+    credentials: true,
+    optionSuccessStatus: 200
+};
 
 // Middleware
-app.use(express.json())
-app.use(cors());
+app.use(cors(corsOptions));
 
 // Routes
 app.use("/api/v1/auth", authRoutes)
