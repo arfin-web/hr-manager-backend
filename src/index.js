@@ -2,11 +2,13 @@ const express = require("express")
 const dotenv = require("dotenv").config()
 const cors = require("cors");
 const dbConnect = require("./config/dbConnect")
-const authRoutes = require("./features/auth/auth.route")
-const employeesRoute = require("./features/employees/employees.route")
-const noticeRoute = require("./features/notice/notice.route")
+const authRoutes = require("./features/auth/auth.routes")
+const employeesRoute = require("./features/employees/employees.routes")
+const noticeRoute = require("./features/notice/notice.routes")
 const tasksRoute = require("./features/tasks/tasks.routes")
-const departmentRoute = require("./features/department/department.route")
+const departmentRoute = require("./features/department/department.routes")
+const stipendRoute = require("./features/stipend/stipend.routes")
+const attendanceRoute = require("./features/attendance/attendance.routes")
 
 dbConnect()
 
@@ -28,6 +30,8 @@ app.use("/api/v1", employeesRoute)
 app.use("/api/v1", noticeRoute)
 app.use("/api/v1", tasksRoute)
 app.use("/api/v1", departmentRoute)
+app.use("/api/v1", stipendRoute)
+app.use("/api/v1", attendanceRoute)
 
 // Define Root Get Route
 app.get("/", (req, res) => {
