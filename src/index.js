@@ -6,6 +6,7 @@ const authRoutes = require("./features/auth/auth.route")
 const employeesRoute = require("./features/employees/employees.route")
 const noticeRoute = require("./features/notice/notice.route")
 const tasksRoute = require("./features/tasks/tasks.routes")
+const departmentRoute = require("./features/department/department.route")
 
 dbConnect()
 
@@ -26,6 +27,7 @@ app.use("/api/v1/auth", authRoutes)
 app.use("/api/v1", employeesRoute)
 app.use("/api/v1", noticeRoute)
 app.use("/api/v1", tasksRoute)
+app.use("/api/v1", departmentRoute)
 
 // Define Root Get Route
 app.get("/", (req, res) => {

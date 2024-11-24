@@ -18,13 +18,13 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    department: {
+        type: String,
+        required: true,
+    },
     stipend: {
         type: Number,
         required: true,
-    },
-    stipendStatus: {
-        type: String,
-        default: "due"
     },
     password: {
         type: String,
