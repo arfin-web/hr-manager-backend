@@ -4,9 +4,9 @@ const User = require("./auth.model")
 
 const register = async (req, res) => {
     try {
-        const { name, email, image, designation, stipend, password, role } = req.body
+        const { name, email, image, designation, department, stipend, password, role } = req.body
         const hashedPassword = await bcrypt.hash(password, 10)
-        const newUser = new User({ name, email, image, designation, stipend, password: hashedPassword, role })
+        const newUser = new User({ name, email, image, designation, department, stipend, password: hashedPassword, role })
         await newUser.save()
         res.status(201).json({ message: `User registered with email ${email}` })
     } catch (error) {
