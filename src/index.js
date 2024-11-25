@@ -9,6 +9,7 @@ const tasksRoute = require("./features/tasks/tasks.routes")
 const departmentRoute = require("./features/department/department.routes")
 const stipendRoute = require("./features/stipend/stipend.routes")
 const attendanceRoute = require("./features/attendance/attendance.routes")
+const leaveRoute = require("./features/leave/leave.routes")
 
 dbConnect()
 
@@ -32,6 +33,7 @@ app.use("/api/v1", tasksRoute)
 app.use("/api/v1", departmentRoute)
 app.use("/api/v1", stipendRoute)
 app.use("/api/v1", attendanceRoute)
+app.use("/api/v1", leaveRoute)
 
 // Define Root Get Route
 app.get("/", (req, res) => {

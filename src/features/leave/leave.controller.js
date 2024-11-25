@@ -2,12 +2,12 @@ const Leave = require("./leave.model")
 
 const createLeaveRequest = async (req, res) => {
     try {
-        const { email, name, designation, department, date, reason } = req.body
-        const newLeaveRequest = new Leave({ email, name, designation, department, date, reason })
+        const { email, name, designation, department, date, reason, status, leaveType } = req.body
+        const newLeaveRequest = new Leave({ email, name, designation, department, date, reason, status, leaveType })
         await newLeaveRequest.save()
-        res.status(201).json({ message: `Leave registered with email ${email}` })
+        res.status(201).json({ message: `Leave Request send Successfully` })
     } catch (error) {
-        res.status(500).json({ message: "Error registering Leave" })
+        res.status(500).json({ message: "Error requisting Leave" })
     }
 }
 

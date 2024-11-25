@@ -24,6 +24,14 @@ const leaveSchema = new mongoose.Schema({
     reason: {
         type: String,
         required: true
+    },
+    status: {
+        type: String,
+        default: "pending"
+    },
+    leaveType: {
+        type: String,
+        required: true
     }
 }, {
     timestamps: true,
