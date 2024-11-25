@@ -2,8 +2,8 @@ const Attendance = require("./attendance.model")
 
 const createAttendance = async (req, res) => {
     try {
-        const { employeeId, name, email, designation, department, date, status } = req.body
-        const newAttendance = new Attendance({ employeeId, name, email, designation, department, date, status })
+        const { employeeId, name, email, designation, department, date, time, note, status } = req.body
+        const newAttendance = new Attendance({ employeeId, name, email, designation, department, date, time, note, status })
         await newAttendance.save()
         res.status(201).json({ message: `Attendance registered with email ${email}` })
     } catch (error) {
