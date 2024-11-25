@@ -8,10 +8,10 @@ const { createAttendance,
 
 const router = express.Router()
 
-router.post("/stipends", createAttendance)
-router.get("/stipends", getAttendance)
-router.get("/stipends/:id", getAttendanceById)
-router.put("/stipends/:id", updateAttendance)
-router.delete("/stipends/:id", deleteAttendance)
+router.post("/attendances", createAttendance)
+router.get("/attendances", getAttendance)
+router.get("/attendances/:id", getAttendanceById)
+router.put("/attendances/:id", updateAttendance)
+router.delete("/attendances/:id", deleteAttendance)
 
 module.exports = router
