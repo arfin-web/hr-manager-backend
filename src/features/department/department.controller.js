@@ -26,6 +26,21 @@ const getDepartments = async (req, res) => {
     }
 }
 
+const getDepartmentById = async (req, res) => {
+    try {
+        const department = await Department.findById(req.params.id)
+        if (!department) {
+            return res.status(404).json({ message: "Department not found" })
+        }
+        res.status(200).json({
+            message: "Department fetched successfully",
+            data: department
+        })
+    } catch (error) {
+        res.status(500).json({ message: "Error fetching department" })
+    }
+}
+
 const updateDepartment = async (req, res) => {
     try {
         const { id } = req.params
@@ -64,6 +79,7 @@ const deleteDepartment = async (req, res) => {
 module.exports = {
     createDepartment,
     getDepartments,
+    getDepartmentById,
     updateDepartment,
     deleteDepartment
 }
