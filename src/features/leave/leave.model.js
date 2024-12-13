@@ -29,6 +29,10 @@ const leaveSchema = new mongoose.Schema({
         type: String,
         default: "pending"
     },
+    leaveDays: {
+        type: String,
+        required: true
+    },
     leaveType: {
         type: String,
         required: true
